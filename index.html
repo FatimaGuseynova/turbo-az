@@ -26,23 +26,51 @@
         </ul>
 
     </div>
-    <div class="h-10 hidden ">
+    <div class="h-[130px] w-[77%] mx-auto hidden md:block ">
         <img class="  h-full w-full object-cover" src="img/deskblack.png" alt="ad">
 
     </div>
-    <div class="bg-white z-50 fixed w-full text-red-700 z-999 pb-3 font-semibold">
-        <div class="w-[90%] mx-auto  mt-[10px]">
+    <div class="hidden w-[80%] mx-auto py-3 text-black opacity-70 md:flex items-center justify-between ">
+        <ul class="flex items-center justify-between w-[15%]">
+            <li class="hover:text-red-700"><a href="#">Tap.az</a></li>
+            <li class="hover:text-red-700"><a href="#">Bina.az</a></li>
+            <li class="hover:text-red-700"><a href="#">Boss.az</a></li>
+        </ul>
+        <ul class="flex items-center justify-between w-[54%]">
+            <li class="text-black hover:text-red-700">Dəstək: (012) 526-47-47</li>
+            <li class="hover:text-red-700">Yardım</li>
+            <li class="hover:text-red-700">RU</li>
+            <li class="hover:text-red-700"><i class="fa-solid fa-comment-dots"></i> Mesajlar</li>
+            <li onclick="likedCars()" class="hover:text-red-700"><i class="fa-solid fa-heart"></i> Seçilmişlər</li>
+            <li class="hover:text-red-700"><i class="fa-solid fa-circle-user"></i> Giriş</li>
+        </ul>
+    </div>
+    <div class="bg-white w-full text-red-700 pb-3 font-semibold md:bg-red-700 md:text-white">
+        <div class="w-[80%] mx-auto  mt-[10px]">
 
-            <div class="flex w-full justify-between items-center">
-                <ul class="text-[18px] relative z-999 flex justify-between w-[60%]">
+
+            <div class="flex w-full  p-3 justify-between items-center">
+                <ul class="text-[18px] flex justify-between w-[60%]  md:hidden ">
                     <li onclick="menud()"><i class="fa-solid fa-bars"></i></li>
                     <li>TURBO</li>
                     <li>BOSS</li>
                     <li>BINA</li>
                     <li>TOP</li>
                 </ul>
-                <a href="#" class="bg-red-800 px-2 py-1.5 rounded-full text-[15px] text-white"><i
+                <ul class="justify-between items-center w-[80%] hidden md:flex">
+                    <li><a href="#" class="font-bold text-[20px]">TURBO.AZ</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">Bütün elanlar</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">Dilerlər</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">Avtokataloq</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">Moto</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">Ehtiyat hissələr və aksesuarlar</a></li>
+                    <li><a href="#" class="font-light hover:opacity-60">İcarə</a></li>
+                </ul>
+                <a href="#" class="bg-red-800 px-2 py-1.5 rounded-full text-[15px] text-white md:hidden"><i
                         class="fa-solid fa-plus"></i></a>
+                <a href="#" class="bg-green-400 p-3 rounded-2xl text-white hidden md:block "><i
+                        class="fa-solid fa-plus text-[15px] border-2 p-0.5 pr-4 mr-[4px] rounded-4xl border-white"></i>Yeni
+                    elan</a>
             </div>
             <div>
 
@@ -54,61 +82,290 @@
     </div>
 
     <div id="mainScreen">
-        <div class="w-[90%] mx-auto ">
-            <div class=" absolute top-[10%] w-[90%]">
-                <div class="bg-white p-2 rounded-2xl mb-2">
-                    <span><i class="fa-solid fa-car text-red-600 mr-1.5"></i></span>
-                    <select class="bg-white w-[90%] outline-0 " id="markalar">
-                        <option value="" selected disabled> Bütün
-                            markalar</option>
+
+        <!-- mobile -->
+        <div class="bg-white p-2 flex mt-1 rounded-2xl md:hidden">
+            <span><i class="fa-solid fa-sliders  text-red-600 mr-1.5"></i></span>
+            <button onclick="filterMobile()" class="bg-white w-[90%] flex justify-start">Filterler</button>
+        </div>
+        <div class="w-[100%] md:w-[73%] mx-auto ">
+            <div class="w-[100%] md:w-[90%] flex flex-col gap-4">
+                <div class="p-2 gap-3 rounded-2xl mb-2 md:flex md:justify-between md:items-center ">
+                    <div
+                        class="flex bg-white md:p-0.5 md:w-[100%] md:items-start items-end rounded-2xl pb-2 p-1 pt-0 md:pb-2">
+                        <span class="md:hidden"><i class="fa-solid fa-car text-red-600 mr-1.5 "></i></span>
+                        <select class=" bg-white md:w-[100%] pt-3 rounded-3xl outline-0 md:text-gray-500 " id="brand">
+                            <option selected disabled value="">Marka</option>
+                        </select>
+                    </div>
+
+                    <select disabled
+                        class="hidden bg-white w-[100%] my-3 md:p-3 rounded-2xl pb-2 p-1 pt-0 filtersCars md:mt-4 md:block md:bg-white p-3 md:text-gray-500 w-[40%] outline-0 md:disabled:opacity-50"
+                        name="" id="model">
+                        <option value="" selected disabled>Model</option>
+                    </select>
+
+
+                    <div
+                        class="hidden mx-auto filtersCars w-fit md:w-[100%] md:inline-flex rounded-2xl overflow-hidden border border-gray-300">
+                        <button onclick="showAll()" id="btn1"
+                            class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                            Hamısı
+                        </button>
+
+                        <button onclick="showNew()" id="btn2"
+                            class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                            Yeni
+                        </button>
+
+                        <button id="btn3" onclick="showOld()"
+                            class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                            Sürülmüş
+                        </button>
+
+                    </div>
+                    <select
+                        class="hidden filterCars md:block md:w-fit md:bg-white p-3 w-[100%] md:text-gray-500 md:w-[12%] outline-0"
+                        name="" id="city">
+                        <option selected disabled value="">Şəhər</option>
                     </select>
                 </div>
-                <div class="bg-white p-2 rounded-2xl">
-                    <span><i class="fa-solid fa-sliders text-red-600 mr-1.5"></i></span>
-                    <select class="bg-white w-[90%] outline-0" name="" id="modeller">Filtirler
-                        <option value="" selected disabled>Filtirler</option>
+                <div class="filtersCars flex flex-wrap md:flex-nowrap gap-3 hidden md:flex items-center justify-between">
+                    <div
+                        class="hidden md:inline-flex rounded-2xl overflow-hidden border px-1 bg-gray-100 border-gray-300">
+                        <input id="price1"
+                            class="bg-gray-100 text-[17px] border-r-1 py-3 border-gray-400  text-gray-500" type="number"
+                            placeholder="Qiymet, min.">
+                        <input id="price2" type="number" class="bg-gray-100 py-3 text-[17px] text-gray-500 pl-3"
+                            placeholder="maks.">
+                    </div>
+                    <select class="bg-white w-[100%] outline-0 md:p-3 md:text-gray-500 md:w-[10%]" id="currency">
+
                     </select>
+                    <div class="flex w-[100%] gap-3 md:w-fit items-center justify-center">
+                        <button
+                            class="bg-gray-100 py-3  px-2 text-[17px] text-black border border-transparent rounded-[6px] hover:border-black"
+                            onclick="kreditle()">Kredit</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] text-black border border-transparent rounded-[6px] hover:border-black"
+                            onclick="barterle()">Barter</button>
+                    </div>
+                    <select class="bg-white w-[100%] outline-0 md:p-3 md:text-gray-500 md:w-[10%]" id="banType">
+                        <option selected disabled value="" selected>Ban növü</option>
+                    </select>
+                    <div
+                        class="hidden w-[100%] md:w-fit filtersCars md:inline-flex rounded-2xl overflow-hidden border px-1 bg-gray-100 border-gray-300">
+                        <select class="bg-gray-100 text-gray-500 px-6 py-4 hover:bg-gray-200" name="" id="minyear">
+                            <option selected disabled value="">il, min</option>
+                        </select>
+                        <select class="bg-gray-100 text-gray-500 px-6 py-4 hover:bg-gray-200" name="" id="maksyear">
+                            <option selected disabled value="">maks.</option>
+                        </select>
+                    </div>
+
+
                 </div>
-                <div class="bg-white rounded-2xl mt-[20px] p-2">
-                    <a href="#" class="  opacity-65 flex items-center justify-between ">Moto <i
-                            class="fa-solid fa-angle-right"></i></a>
+                <h6 class="py-[15px] hidden md:block">Avtomobilin təchizatı</h6>
+                <div class="hidden gap-3" id="hiddenFilter">
+                    <div class="filtersCars hidden gap-3 md:flex items-center justify-between">
+                        <select class="bg-white w-[100%] md:w-fit outline-0 md:p-3 md:text-gray-500" id="banType">
+                            <option selected disabled value="">Rəng</option>
+                        </select>
+                        <select class="bg-white w-[100%] md:w-fit outline-0 md:p-3 md:text-gray-500 md:w-[10%]" name=""
+                            id="maksyear">
+                            <option selected disabled value="">Yanacaq növü</option>
+                        </select>
+                        <select class="bg-white w-[100%] md:w-fit outline-0 md:p-3 md:text-gray-500 md:w-[10%]" name=""
+                            id="maksyear">
+                            <option selected disabled value="">Ötürücü</option>
+                        </select>
+                        <select class="bg-white w-[100%] md:w-fit outline-0 md:p-3 md:text-gray-500 md:w-[10%]" name=""
+                            id="maksyear">
+                            <option selected disabled value="">Sürətlər qutusu</option>
+                        </select>
+                    </div>
+                    <div class="hidden flex flex-wrap filtersCars md:flex items-center my-[30px] gap-4 justify-between">
+                        <div
+                            class="hidden w-[100%] md:w-fit filtersCars md:inline-flex rounded-2xl overflow-hidden border px-1 bg-gray-100 border-gray-300">
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="minyear">
+                                <option selected disabled value="">Həcm (sm <sup>3</sup>), min</option>
+                            </select>
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="maksyear">
+                                <option selected disabled value="">maks.</option>
+                            </select>
+                        </div>
+                        <div
+                            class="hidden w-[100%] md:w-fit filtersCars md:inline-flex gap-3 rounded-2xl overflow-hidden border px-1 bg-gray-100 border-gray-300">
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="minyear">
+                                <option selected disabled value="">Güc (a. g.), min.</option>
+                            </select>
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="maksyear">
+                                <option selected disabled value="">maks.</option>
+                            </select>
+                        </div>
+                        <div
+                            class="hidden w-[100%] md:w-fit filtersCars md:inline-flex rounded-2xl overflow-hidden border px-1 bg-gray-100 border-gray-300">
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="minyear">
+                                <option selected disabled value="">Yürüş (km), min.</option>
+                            </select>
+                            <select class="bg-gray-100 text-gray-500 px-6 py-4 " name="" id="maksyear">
+                                <option selected disabled value="">maks.</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div
+                        class="hidden filtersCars flex flex-wrap gap-3 md:flex flex my-[30px] items-center gap-3 justify-between">
+                        <div class="hidden md:inline-flex rounded-2xl overflow-hidden">
+                            <div
+                                class="hidden w-[100%]  md:inline-flex rounded-2xl overflow-hidden border border-gray-300">
+                                <button onclick="showAll31()" id="btn31"
+                                    class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                                    Hamısı
+                                </button>
+
+                                <button id="btn4" class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                                    Dilerlər
+                                </button>
+
+                                <button id="btn5" class="bg-gray-100 text-black px-6 py-4 hover:bg-gray-200">
+                                    Şəxsi
+                                </button>
+                            </div>
+                        </div>
+                        <select class="bg-gray-100  text-gray-500 px-6 py-4" name="" id="maksyear">
+                            <option selected disabled value="">Sahiblərinin sayı</option>
+                        </select>
+                        <select class="bg-gray-100 text-gray-500 px-6 py-4" name="" id="maksyear">
+                            <option selected disabled value="">Yerlərin sayı</option>
+                        </select>
+                        <select class="bg-gray-100 text-gray-500  px-6 py-4" name="" id="maksyear">
+                            <option selected disabled value="">Hansı bazar üçün yığılıb</option>
+                        </select>
+                    </div>
+
+
+                    <div
+                        class="hidden filtersCars flex flex-wrap gap-3 md:flex md:flex-wrap items-center py-[20px] justify-between">
+                        <button
+                            class=" bg-gray-100 not-first-of-type:100 py-3 px-2 rounded-[6px] text-[17px] text-black border border-transparent hover:border-black">Vuruğu
+                            yoxdur</button>
+                        <button
+                            class="bg-gray-100 py-4 rounded-[6px] text-[17px]  px-2 text-black border border-transparent hover:border-black">Rənglənməyib</button>
+                        <button
+                            class="bg-gray-100 py-3 rounded-[6px] text-[17px]  px-2 text-black border border-transparent hover:border-black">Yalnız
+                            qəzalı avtomobillər</button>
+                        <button
+                            class="bg-gray-100 py-3 text-[17px] rounded-[6px]  px-2 text-black border border-transparent hover:border-black">Yalnız
+                            qəzalı avtomobillər</button>
+                        <select class="bg-gray-100  text-gray-500 px-6 py-4" name="" id="maksyear">
+                            <option selected disabled value="">Status</option>
+                        </select>
+                    </div>
+
+                    <div
+                        class="hidden filtersCars md:flex items-center py-[20px] gap-3 flex justify-between gap-3 flex-wrap">
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Yüngül
+                            lehimli disklər</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">ABS</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Lyuk</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Yağış
+                            sensoru</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Mərkəzi
+                            qapanma</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Park
+                            radarı</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Kondisioner</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Oturacaqların
+                            isidilməsi</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Dəri
+                            salon</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Ksenon
+                            lampalar</button><button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">360º
+                            kamera</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Arxa
+                            görüntü kamerası</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Yan
+                            pərdələr</button>
+                        <button
+                            class="bg-gray-100 py-3 px-2 text-[17px] rounded-[6px] text-black border border-transparent hover:border-black">Oturacaqların
+                            ventilyasiyası</button>
+                    </div>
                 </div>
-                <div class="bg-white rounded-2xl mt-[20px] p-2">
-                    <a href="#" class="  opacity-65 flex items-center w-fit justify-between ">Avtokataloq <span class="bg-green-500 ml-[15px] p-1 rounded-3xl text-white font-bold text-[13px]">yeni</span> <i
-                            class="fa-solid fa-angle-right ml-[130%]"></i></a>
-                </div>
+            </div>
+        </div>
+        <div class="bg-white rounded-2xl mt-[20px] p-2 md:hidden">
+            <a href="#" class="  opacity-65 flex items-center justify-between ">Moto <i
+                    class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <div class="bg-white rounded-2xl mt-[20px] p-2 md:hidden">
+            <a href="#" class="  opacity-65 flex items-center  justify-between "><span>Avtokataloq <span
+                        class="bg-green-500 ml-[15px] p-1 rounded-3xl text-white font-bold text-[13px]">yeni</span></span>
+                <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+
+        <div class="w-[100%] md:w-[70%] mx-auto ">
+            <div class="flex items-center justify-between">
                 <h6 id="lengthArr" class=" text-black mt-[10px] ml-[8px]">Bu gun: </h6>
+                <div class="flex items-center justify-between w-[50%]">
+                    <a href="#" class="text-black opacity-60" onclick="sifirla()">Sıfırla</a>
+                    <a href="#" class="text-red-700" id="morefit" onclick="moreFilter()">Daha çox filtr</a>
 
-            </div>
-            <div class="absolute top-[38%]  w-[87%]">
-                <ul class="flex items-center justify-between ">
-                    <li class="underline" onclick="kreditle()">Kreditle</li>
-                    <li class="underline" onclick="barterle()">Barter</li>
-                    <li class="underline">Aksesuarlar</li>
-                    <li class="underline">Siniler</li>
-                    <li class="underline">Icare</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="w-[90%] mx-auto pt-[200px]">
-            <div class="w-[90%] mx-auto pt-[200px] bg-gray-200 w-full">
-                <div id="showCars" class="grid grid-cols-2 md:grid-cols-4 gap-3">
-
-
-
-
+                    <a href="#" class="text-white bg-red-700 py-3 px-4 rounded-2xl">Elanları göstər</a>
                 </div>
             </div>
         </div>
 
 
 
+    </div>
+    <div class=" mx-5 my-4 w-[87%] md:hidden">
+        <ul class="flex items-center justify-between ">
+            <li class="underline" onclick="kreditle()">Kreditle</li>
+            <li class="underline" onclick="barterle()">Barter</li>
+            <li class="underline">Aksesuarlar</li>
+            <li class="underline">Siniler</li>
+            <li class="underline">Icare</li>
+        </ul>
+    </div>
 
 
-        <script src="turbo.js"></script>
-        <script src="script.js"></script>
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+    <div class="w-[90%] mx-auto pt-[50px]">
+        <div class=" mx-auto bg-gray-200 w-full">
+            <div id="showCars" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="turbo.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
