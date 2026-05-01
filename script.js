@@ -21,7 +21,6 @@ function renderCars(array) {
                         <span id="credit" class=" bg-orange-400 ${item.credit === true ? 'initial' : 'hidden'} rounded-full p-1 text-[10px] text-white mr-1"><i class="fa-solid fa-percent"></i></span>
                         <span id="barter" class="bg-green-400 ${item.barter === true ? 'initial' : 'hidden'} rounded-full p-1 text-[10px] text-white"><i class="fa-solid fa-arrows-rotate"></i></span>
                     </div>
-                    <span class="text-white text-lg"><i onclick="heart(this, ${item.id})" class="heartRed fa-regular fa-heart"></i></span>
                 </div>
 
                 <div class="flex justify-end">
@@ -38,6 +37,8 @@ function renderCars(array) {
                 <h5 class="text-[14px] font-semibold text-gray-800">${item.brand} ${item.model}</h5>
                 <h6 class="text-[12px] text-gray-600">${item.year}, ${item.engine} L, ${item.odometer} ${item.odometerUnit}</h6>
                 <p class="text-gray-400 text-[12px] mt-1">${item.city}, ${item.dates}</p>
+                                    <span class="text-black inline-flex items-end justify-end text-lg text-end w-[100%]"><i onclick="heart(this, ${item.id})" class="heartRed fa-regular fa-heart"></i></span>
+
             </div>
         </div>
         `
